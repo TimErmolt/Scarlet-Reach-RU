@@ -127,7 +127,8 @@
 	if(!fexists("data/player_saves/[copytext(ckey,1,2)]/[ckey]/preferences.sav"))
 		to_chat(usr, span_boldwarning("User does not exist."))
 		return
-	var/popup_window_data = "<center>[ckey]</center>"
+	var/popup_window_data = "<!DOCTYPE html><html><head><meta charset='utf-8'></head><body>"
+	popup_window_data += "<center>[ckey]</center>"
 	popup_window_data += "<center>PQ: [get_playerquality(ckey, TRUE, TRUE)] ([get_playerquality(ckey, FALSE, TRUE)])</center>"
 
 //	dat += "<table width=100%><tr><td width=33%><div style='text-align:left'><a href='?_src_=prefs;preference=playerquality;task=menu'><b>PQ:</b></a> [get_playerquality(user.ckey, text = TRUE)]</div></td><td width=34%><center><a href='?_src_=prefs;preference=triumphs;task=menu'><b>TRIUMPHS:</b></a> [user.get_triumphs() ? "\Roman [user.get_triumphs()]" : "None"]</center></td><td width=33%></td></tr></table>"
@@ -145,6 +146,7 @@
 			if(ya)
 				popup_window_data += "<span class='info'>[listy[i]]</span><br>"
 	var/datum/browser/noclose/popup = new(usr, "playerquality", "", 390, 320)
+	popup_window_data += "</body></html>"
 	popup.set_content(popup_window_data)
 	popup.open()
 
@@ -221,7 +223,7 @@
 	if(!key)
 		return
 	var/curcomm = 0
-	var/json_file = file("data/player_saves/[copytext(key,1,2)]/[key]/commends.json")
+	var/json_file = file("data/player_saves/[copytext_char(key,1,2)]/[key]/commends.json")
 	if(!fexists(json_file))
 		WRITE_FILE(json_file, "{}")
 	var/list/json = json_decode(file2text(json_file))
