@@ -18,15 +18,15 @@ GLOBAL_PROTECT(agevetted_list)
 	return FALSE
 
 /mob/proc/check_agevet()
-       if(client)
-               return client.check_agevet()
-       if(LAZYACCESS(GLOB.agevetted_list, ckey) || copytext(key,1,2)=="@") //aghosted people stay verified
-               return TRUE
-       if(check_whitelist(ckey))
-               if(!LAZYACCESS(GLOB.agevetted_list, ckey))
-                       add_agevet(ckey, "SYSTEM")
-               return TRUE
-       return FALSE
+	if(client)
+		return client.check_agevet()
+	if(LAZYACCESS(GLOB.agevetted_list, ckey) || copytext(key,1,2)=="@") //aghosted people stay verified
+		return TRUE
+	if(check_whitelist(ckey))
+		if(!LAZYACCESS(GLOB.agevetted_list, ckey))
+			add_agevet(ckey, "SYSTEM")
+			return TRUE
+		return FALSE
 
 /client/proc/agevet_player()
 	set category = "-GameMaster-"
