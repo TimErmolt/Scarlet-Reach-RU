@@ -44,7 +44,7 @@ GLOBAL_PROTECT(agevetted_list)
 	if(!target_ckey || (target_ckey in GLOB.agevetted_list))
 		return
 
-	if(IsAdminAdvancedProcCall())
+	if(admin_ckey != "SYSTEM" && IsAdminAdvancedProcCall())
 		return
 
 	if(LAZYACCESS(GLOB.agevetted_list, target_ckey))
