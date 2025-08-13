@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(discord_notify)
 		var/payload = list(
 			"content" = "<@&1254782534626312203>\n",
 			"embeds" = list(list(
-				"title" = "Round [GLOB.rogue_round_id] is starting soon!!",
+				"title" = "Round [GLOB.rogue_round_id] is starting soon!! Online: [GLOB.player_list.len]",
 				"description" = "",
 				"color" = 16711680
 			))
