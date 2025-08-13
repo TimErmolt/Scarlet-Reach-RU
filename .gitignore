@@ -218,34 +218,13 @@ tools/MapAtmosFixer/MapAtmosFixer/bin/*
 
 # Ignore everything in the config folder, but NOT the example or music jukeboxes.
 # Also ignore custom music and title screens (amend as appropriate)
-# Ignore everything under config (recursively)
-/config/**
 /config/*
-
-# --- Exceptions ---
-
-# Example config
 !/config/example/
-!/config/example/**
 
-# Jukebox music exceptions
-!/config/jukebox_music/
-!/config/jukebox_music/**
-!/config/jukebox_music/sounds/*
-!/config/jukebox_music/sounds/exclude/*
-!/config/jukebox_music/sounds/exclude/**
-
-# Title music exceptions
-!/config/title_music/
-!/config/title_music/**
-!/config/title_music/sounds/
-!/config/title_music/sounds/exclude/
-!/config/title_music/sounds/exclude/**
+/config/jukebox_music/sounds/*
+!/config/jukebox_music/sounds/exclude
+/config/title_music/sounds/*
+!/config/title_music/sounds/exclude
 !/config/title_music/sounds/title1.ogg
-
-# Title screens exceptions
-!/config/title_screens/
-!/config/title_screens/**
-!/config/title_screens/images/*
-!/config/title_screens/images/exclude/*
-!/config/title_screens/images/exclude/**
+/config/title_screens/images/*
+!/config/title_screens/images/exclude
