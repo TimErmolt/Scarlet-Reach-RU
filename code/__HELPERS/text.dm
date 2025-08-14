@@ -87,7 +87,7 @@
 		return			//message too long
 	var/non_whitespace = 0
 	for(var/i=1, i<=length_char(text), i++)
-		switch(text2ascii(text,i))
+		switch(text2ascii_char(text,i))
 			if(62,60,92,47)
 				return			//rejects the text if it contains these bad characters: <, >, \ or /
 			if(127 to 255)
@@ -128,7 +128,7 @@
 	var/t_out = ""
 
 	for(var/i=1, i<=length_char(t_in), i++)
-		var/ascii_char = text2ascii(t_in,i)
+		var/ascii_char = text2ascii_char(t_in,i)
 		switch(ascii_char)
 			// A  .. Z
 			if(65 to 90)			//Uppercase Letters
@@ -270,14 +270,14 @@
 //Returns a string with reserved characters and spaces before the first letter removed
 /proc/trim_left(text)
 	for (var/i = 1 to length_char(text))
-		if (text2ascii(text, i) > 32)
+		if (text2ascii_char(text, i) > 32)
 			return copytext_char(text, i)
 	return ""
 
 //Returns a string with reserved characters and spaces after the last letter removed
 /proc/trim_right(text)
 	for (var/i = length_char(text), i > 0, i--)
-		if (text2ascii(text, i) > 32)
+		if (text2ascii_char(text, i) > 32)
 			return copytext_char(text, 1, i + 1)
 
 	return ""
@@ -397,14 +397,14 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 		into = ""
 	if(!istext(from))
 		from = ""
-	var/null_ascii = istext(null_char) ? text2ascii(null_char,1) : null_char
+	var/null_ascii = istext(null_char) ? text2ascii_char(null_char,1) : null_char
 
 	var/previous = 0
 	var/start = 1
 	var/end = length_char(into) + 1
 
 	for(var/i=1, i<end, i++)
-		var/ascii = text2ascii(from, i)
+		var/ascii = text2ascii_char(from, i)
 		if(ascii == null_ascii)
 			if(previous != 1)
 				. += copytext_char(from, start, i)
@@ -428,7 +428,7 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 	var/temp
 	var/len = length_char(needles)
 	for(var/i=1, i<=len, i++)
-		temp = findtextEx_char(haystack, ascii2text(text2ascii(needles,i)), start, end)	//Note: ascii2text(text2ascii) is faster than copytext_char()
+		temp = findtextEx_char(haystack, ascii2text(text2ascii_char(needles,i)), start, end)	//Note: ascii2text(text2ascii) is faster than copytext_char()
 		if(temp)
 			end = temp
 	return end
@@ -611,14 +611,14 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 	var/list/textlist = string2charlist(text)
 	var/list/result = list()
 	for(var/c in textlist)
-		var/ca = text2ascii(c)
-		if(ca >= text2ascii("a") && ca <= text2ascii("m"))
+		var/ca = text2ascii_char(c)
+		if(ca >= text2ascii_char("a") && ca <= text2ascii_char("m"))
 			ca += 13
-		else if(ca >= text2ascii("n") && ca <= text2ascii("z"))
+		else if(ca >= text2ascii_char("n") && ca <= text2ascii_char("z"))
 			ca -= 13
-		else if(ca >= text2ascii("A") && ca <= text2ascii("M"))
+		else if(ca >= text2ascii_char("A") && ca <= text2ascii_char("M"))
 			ca += 13
-		else if(ca >= text2ascii("N") && ca <= text2ascii("Z"))
+		else if(ca >= text2ascii_char("N") && ca <= text2ascii_char("Z"))
 			ca -= 13
 		result += ascii2text(ca)
 	return jointext(result, "")
@@ -874,7 +874,7 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 
 	return corrupted_text
 
-#define is_alpha(X) ((text2ascii(X) <= 122) && (text2ascii(X) >= 97))
+#define is_alpha(X) ((text2ascii_char(X) <= 122) && (text2ascii_char(X) >= 97))
 #define is_digit(X) ((length_char(X) == 1) && (length_char(text2num(X)) == 1))
 
 //json decode that will return null on parse error instead of runtiming.
