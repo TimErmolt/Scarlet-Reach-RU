@@ -24,7 +24,6 @@
 
 		shape.apply_damage(damapply, source.convert_damage_type, forced = TRUE);
 
-	stored.stasis = TRUE
 	slink = soullink(/datum/soullink/shapeshift, stored , shape)
 	slink.source = src
 
@@ -79,7 +78,6 @@
 		var/damapply = stored.maxHealth * damage_percent
 
 		stored.apply_damage(damapply, source.convert_damage_type, forced = TRUE)
-	stored.stasis = FALSE
 	qdel(shape)
 	qdel(src)
 

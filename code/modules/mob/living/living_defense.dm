@@ -195,9 +195,6 @@
 	if(user == src)
 		instant = TRUE
 
-	if(HAS_TRAIT(user, TRAIT_NOSTRUGGLE))	
-		instant = TRUE
-
 	if(surrendering)
 		combat_modifier = 2
 
@@ -298,8 +295,6 @@
 	return list(/datum/intent/grab/move)
 
 /mob/living/proc/send_grabbed_message(mob/living/carbon/user)
-	if(HAS_TRAIT(user, TRAIT_NOTIGHTGRABMESSAGE))	
-		return
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
 		visible_message(span_danger("[user] firmly grips [src]!"),
 						span_danger("[user] firmly grips me!"), span_hear("I hear aggressive shuffling!"), null, user)

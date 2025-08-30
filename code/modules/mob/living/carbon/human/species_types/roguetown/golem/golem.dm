@@ -105,16 +105,7 @@
 		"Cobalt" = GOLEM_COBALT,
 		"Granite" = GOLEM_GRANITE,
 		"Jade" = GOLEM_JADE,
-		"Amythortz" = GOLEM_AMETHYST,
-		"Silver" = GOLEM_SILVER,
-		"Coral" = GOLEM_CORAL,
-		"Gold" = GOLEM_GOLD,
-		"Limestone" = GOLEM_LIMESTONE,
-		"Copper" = GOLEM_COPPER,
-		"Rust" = GOLEM_RUST,
-		"Obsidian" = GOLEM_OBSIDIAN,
-		"Lapis" = GOLEM_LAPIS,
-		"Basalt" = GOLEM_BASALT
+		"Amythortz" = GOLEM_AMETHYST
 	)
 
 /datum/species/golem/metal/get_hairc_list()

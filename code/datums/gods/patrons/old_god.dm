@@ -1,17 +1,16 @@
 /datum/patron/old_god
-	name = "Psydon"
+	name = "Psydon (Known)"
 	domain = "God of Ontological Reality"
-	desc = "The true God of everything, Psydon is maximally good - He created humen in his image to live in Psydonia, and defended the Black Basin by sending the COMET SYON to defeat the rampaging archdemon."	
+	desc = "Those who openly worship Psydon in defiance of the Holy See are seen as heretics, but most are regarded as harmless relics of a bygone age. Tolerated but scorned, they endure quietly, holding to the hope that PSYDON YET LIVES. PSYDON YET ENDURES."
 	worshippers = "Fanatics and Nostalgists"
 	associated_faith = /datum/faith/old_god
-	mob_traits = list(TRAIT_PSYDONIAN_GRIT)
+	mob_traits = list(TRAIT_PSYDONITE)
 	miracles = list(
 		/obj/effect/proc_holder/spell/targeted/touch/orison = CLERIC_ORI,
 		/obj/effect/proc_holder/spell/self/check_boot = CLERIC_T0,
 		/obj/effect/proc_holder/spell/invoked/psydonendure = CLERIC_T1,
 		/obj/effect/proc_holder/spell/self/psydonrespite = CLERIC_T2,
 	)
-	traits_tier = list(TRAIT_PSYDONITE = CLERIC_T1)
 	confess_lines = list(
 		"THERE IS ONLY ONE TRUE GOD!",
 		"PSYDON YET LYVES! PSYDON YET ENDURES!",
@@ -20,7 +19,7 @@
 
 
 /obj/effect/proc_holder/spell/self/check_boot
-	name = "BOOT-CHECK"
+	name = "Check Your Boot"
 	releasedrain = 10
 	chargedrain = 0
 	chargetime = 0
@@ -105,7 +104,6 @@
 // no he's dead - ok maybe he does
 
 /datum/patron/old_god/can_pray(mob/living/follower)
-	. = ..()
 	. = TRUE
 	// Allows prayer near psycross.
 	for(var/obj/structure/fluff/psycross/cross in view(4, get_turf(follower)))
@@ -227,3 +225,22 @@
 
 	revert_cast()
 	return FALSE
+
+/datum/patron/old_god/psydonite_hidden
+	name = "Psydon (Hidden)"
+	domain = "God of Ontological Reality"
+	desc = "These followers hide their worship of Psydon, blending into society and sometimes gaining privilege or status. But discovery risks being hunted, for only worshippers of the Ten can be nobility."
+	worshippers = "Secret cults, double agents, those who must hide their faith to survive."
+	associated_faith = /datum/faith/old_god
+	mob_traits = list(TRAIT_PSYDONITE)
+	miracles = list(
+		/obj/effect/proc_holder/spell/targeted/touch/orison = CLERIC_ORI,
+		/obj/effect/proc_holder/spell/self/check_boot = CLERIC_T0,
+		/obj/effect/proc_holder/spell/invoked/psydonendure = CLERIC_T1,
+		/obj/effect/proc_holder/spell/self/psydonrespite = CLERIC_T2,
+	)
+	confess_lines = list(
+		"THERE IS ONLY ONE TRUE GOD!",
+		"PSYDON YET LYVES! PSYDON YET ENDURES!",
+		"REBUKE THE HERETICAL- PSYDON ENDURES!",
+	)

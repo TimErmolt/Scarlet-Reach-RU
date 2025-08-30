@@ -290,10 +290,6 @@
 			pic.color = get_detail_color()
 		add_overlay(pic)
 
-/obj/item/clothing/neck/roguetown/fencerguard/Initialize()
-	. = ..()		
-	update_icon()		
-
 /obj/item/clothing/neck/roguetown/gorget/forlorncollar
 	name = "forlorn collar"
 	desc = "A old reminder."

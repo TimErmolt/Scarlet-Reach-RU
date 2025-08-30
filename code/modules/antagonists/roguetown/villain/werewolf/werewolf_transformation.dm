@@ -77,7 +77,6 @@
 //	stop_cmusic()
 
 	src.fully_heal(FALSE)
-	src.stasis = TRUE
 
 	var/ww_path
 	if(gender == MALE)
@@ -130,7 +129,7 @@
 	W.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
 	W.adjust_skillrank(/datum/skill/misc/climbing, 6, TRUE)
 	W.adjust_skillrank(/datum/skill/misc/swimming, 5, TRUE)
-
+	
 	W.STASTR = 20 // LOCK IN
 	W.STACON = 20
 	W.STAEND = 20
@@ -139,7 +138,6 @@
 	W.AddSpell(new /obj/effect/proc_holder/spell/self/claws)
 
 	ADD_TRAIT(src, TRAIT_NOSLEEP, TRAIT_GENERIC)
-	ADD_TRAIT(W, TRAIT_GRABIMMUNE, TRAIT_GENERIC)
 
 	ADD_TRAIT(W, TRAIT_STRONGBITE, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_ZJUMP, TRAIT_GENERIC)
@@ -161,7 +159,6 @@
 	ADD_TRAIT(W, TRAIT_SPELLCOCKBLOCK, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_LONGSTRIDER, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_STRENGTH_UNCAPPED, TRAIT_GENERIC)
-	ADD_TRAIT(W, TRAIT_GRABIMMUNE, TRAIT_GENERIC)
 
 	invisibility = oldinv
 
@@ -201,7 +198,6 @@
 	to_chat(W, span_userdanger("I return to my facade."))
 	playsound(W.loc, pick('sound/combat/gib (1).ogg','sound/combat/gib (2).ogg'), 200, FALSE, 3)
 	W.spawn_gibs(FALSE)
-	W.stasis = FALSE
 	W.Knockdown(30)
 	W.Stun(30)
 

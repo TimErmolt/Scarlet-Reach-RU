@@ -191,6 +191,8 @@
 			splashed_user.apply_status_effect(/datum/status_effect/facial/internal)
 		else
 			splashed_user.apply_status_effect(/datum/status_effect/facial)
+	if(user != target)
+		knot_try()
 	after_ejaculation()
 	if(!oral)
 		after_intimate_climax()

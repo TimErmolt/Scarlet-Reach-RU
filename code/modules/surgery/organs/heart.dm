@@ -26,6 +26,7 @@
 	/// Associated maniac key
 	var/inscryption_key
 
+	food_type = /obj/item/reagent_containers/food/snacks/organ/heart
 	sellprice = 25
 
 /obj/item/organ/heart/Destroy()

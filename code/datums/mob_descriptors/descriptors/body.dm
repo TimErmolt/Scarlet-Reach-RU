@@ -1,7 +1,6 @@
 /datum/mob_descriptor/body
 	abstract_type = /datum/mob_descriptor/body
 	slot = MOB_DESCRIPTOR_SLOT_BODY
-	show_obscured = TRUE
 
 /datum/mob_descriptor/body/average
 	name = "Average"

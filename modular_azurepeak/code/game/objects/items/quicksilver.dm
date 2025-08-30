@@ -11,11 +11,6 @@
 	var/miracle_use = 0
 	var/success = 0
 
-/obj/item/quicksilver/luxinfused
-	name = "absolving silver"
-	icon_state = "quicksilverlux"
-	desc = "A daring blend of trace amounts of purifying lux, aberrant blood, and divine silver, this poultice can lift some of the most fell of curses."
-
 /obj/item/quicksilver/examine(mob/user)
 	. = ..()
 	if(miracle_use)
@@ -30,8 +25,6 @@
 		return
 	if(HAS_TRAIT(user, TRAIT_PURITAN))
 		inquisitor = TRUE
-	if(HAS_TRAIT(user, TRAIT_PACIFISM) && HAS_TRAIT(user, TRAIT_INQUISITION) && HAS_TRAIT(user, TRAIT_SILVER_BLESSED))
-		inquisitor = TRUE	
 
 	if(!M.mind) //Stopping null lookup runtimes
 		to_chat(user, span_warning("[M] does not have the mind to benefit from the holy anointment."))

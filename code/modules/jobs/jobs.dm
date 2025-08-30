@@ -101,7 +101,6 @@ GLOBAL_LIST_INIT(church_positions, list(
 GLOBAL_LIST_INIT(inquisition_positions, list(
 	"Inquisitor",
 	"Orthodoxist",
-	"Absolver",
 ))
 
 

@@ -92,22 +92,14 @@
 		else
 			to_chat(user, span_warning("Wrong key."))
 			return
-	else if(istype(P, /obj/item/storage/keyring))
-		var/right_key = FALSE
-		for(var/obj/item/roguekey/KE in P.contents)
+	if(istype(P, /obj/item/storage/keyring))
+		var/obj/item/storage/keyring/K = P
+		for(var/obj/item/roguekey/KE in K.keys)
 			if(KE.lockid == lockid)
-				right_key = TRUE
 				locked = !locked
 				playsound(loc, 'sound/misc/gold_misc.ogg', 100, FALSE, -1)
 				update_icon()
 				return attack_hand(user)
-		if(!right_key)
-			to_chat(user, span_warning("Wrong key."))
-			return
-	if(istype(P, /obj/item/roguecoin/aalloy))
-		return
-	if(istype(P, /obj/item/roguecoin/inqcoin))	
-		return			
 	if(istype(P, /obj/item/roguecoin))
 		budget += P.get_real_price()
 		qdel(P)

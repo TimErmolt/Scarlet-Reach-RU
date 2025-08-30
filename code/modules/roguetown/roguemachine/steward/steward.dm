@@ -52,10 +52,6 @@
 				return
 		to_chat(user, span_warning("Wrong key."))
 		return
-	if(istype(P, /obj/item/roguecoin/aalloy))
-		return
-	if(istype(P, /obj/item/roguecoin/inqcoin))	
-		return	
 	if(istype(P, /obj/item/roguecoin))
 		SStreasury.give_money_treasury(P.get_real_price(), "NERVE MASTER deposit")
 		qdel(P)
@@ -288,7 +284,7 @@
 				for(var/mob/living/carbon/human/A in SStreasury.bank_accounts)
 					if(ishuman(A))
 						var/mob/living/carbon/human/tmp = A
-						contents += "[tmp.real_name] ([job_filter(tmp.advjob, tmp.job, compact)]) - [SStreasury.bank_accounts[A]]m"
+						contents += "[tmp.real_name] ([job_filter(tmp.advjob, tmp.job)]) - [SStreasury.bank_accounts[A]]m"
 					else
 						contents += "[A.real_name] - [SStreasury.bank_accounts[A]]m"
 					contents += " / <a href='?src=\ref[src];givemoney=\ref[A]'>\[PAY\]</a> <a href='?src=\ref[src];fineaccount=\ref[A]'>\[FINE\]</a><BR><BR>"
@@ -296,7 +292,7 @@
 				for(var/mob/living/carbon/human/A in SStreasury.bank_accounts)
 					if(ishuman(A))
 						var/mob/living/carbon/human/tmp = A
-						contents += "[tmp.real_name] ([job_filter(tmp.advjob, tmp.job, compact)]) - [SStreasury.bank_accounts[A]]m<BR>"
+						contents += "[tmp.real_name] ([job_filter(tmp.advjob, tmp.job)]) - [SStreasury.bank_accounts[A]]m<BR>"
 					else
 						contents += "[A.real_name] - [SStreasury.bank_accounts[A]]m<BR>"
 					contents += "<a href='?src=\ref[src];givemoney=\ref[A]'>\[Give Money\]</a> <a href='?src=\ref[src];fineaccount=\ref[A]'>\[Fine Account\]</a><BR><BR>"
@@ -423,19 +419,16 @@
 	popup.set_content(contents)
 	popup.open()
 
-/obj/structure/roguemachine/steward/proc/job_filter(advj, j, compact = FALSE)
+/obj/structure/roguemachine/steward/proc/job_filter(advj, j)
 	if(advj in excluded_jobs)
 		return "Adventurer"
 	if(j in excluded_jobs)
 		return "Adventurer"
-	if(compact && j)
-		return j
-	else if(!compact && advj && j)
-		return "[j] ([advj])"
-	else if(j)
-		return j
-	else if(advj)
+	if(advj)
 		return advj
+	else
+		return j
+
 
 #undef TAB_MAIN
 #undef TAB_BANK

@@ -183,9 +183,13 @@
 /obj/item/reagent_containers/food/snacks/organ/proc/check_culling(mob/living/eater)
 	return
 
-/obj/item/reagent_containers/food/snacks/organ/check_culling(mob/living/eater)
+/obj/item/reagent_containers/food/snacks/organ/heart
+	list_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/toxin/stampoison = 2)
+	grind_results = list(/datum/reagent/toxin/stampoison = 6)
+
+/obj/item/reagent_containers/food/snacks/organ/heart/check_culling(mob/living/eater)
 	. = ..()
-	if(QDELETED(organ_inside) || !istype(organ_inside, /obj/item/organ/heart))
+	if(!organ_inside)
 		return
 
 	for(var/datum/culling_duel/D in GLOB.graggar_cullings)

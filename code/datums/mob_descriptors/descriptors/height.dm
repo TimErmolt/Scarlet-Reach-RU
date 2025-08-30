@@ -1,7 +1,6 @@
 /datum/mob_descriptor/height
 	abstract_type = /datum/mob_descriptor/height
 	slot = MOB_DESCRIPTOR_SLOT_HEIGHT
-	show_obscured = TRUE
 
 /datum/mob_descriptor/height/moderate
 	name = "Moderate"

@@ -15,8 +15,8 @@
 	if(M.stat < DEAD)
 		to_chat(user, "They're not dead!")
 		return FALSE
-	if(!M.mind)
-		to_chat(user, "[M]'s heart is inert.")
+	if(M.mind && !M.mind.active)
+		to_chat(user, "[M]'s heart is inert. Maybe it will respond later?")
 		return FALSE
 
 	. = ..()
