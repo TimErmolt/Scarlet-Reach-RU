@@ -760,6 +760,12 @@
 	grid_height = 64
 	grid_width = 64
 
+/obj/item/clothing/suit/roguetown/shirt/robe/spellcasterrobe/light
+	name = "tattered spellsinger robes"	//meant for the version you can spawn with via loadout
+	desc = "Old and worn robes like those of spellblades. Though, these carry the signs of poverty, missing discouraging amounts of padding in leather and linen, as if emaciated from a famine."
+	armor = ARMOR_PADDED	//you can layer this with a gambeson. still really good but not arguably competing with the studded leather and hardened coat anymore
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
+
 //MEDIUM ARMOR//
 
 /obj/item/clothing/suit/roguetown/armor/chainmail
@@ -1585,7 +1591,7 @@
 	max_integrity = 300
 	sellprice = 25
 
-/obj/item/clothing/suit/roguetown/armor/basiceast/captainrobe/
+/obj/item/clothing/suit/roguetown/armor/basiceast/captainrobe/light
 	name = "floral robes"
 	desc = "Flower-styled robes, the Merchant Guild says that this is from the southern Kazengite region."
 	armor = ARMOR_PADDED_BAD
