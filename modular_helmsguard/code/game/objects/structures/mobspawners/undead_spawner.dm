@@ -11,9 +11,9 @@
 	max_mobs = 3
 	restart_time = 10 MINUTES
 	mob_types = list(
-	/mob/living/carbon/human/species/skeleton/npc = 1,
+	/mob/living/carbon/human/species/skeleton/npc/ambush = 1,
 	/mob/living/simple_animal/hostile/rogue/skeleton/bow = 3,
-	/mob/living/carbon/human/species/dwarfskeleton = 1,
+	/mob/living/carbon/human/species/dwarfskeleton/ambush = 1,
 	/mob/living/carbon/human/species/skeleton/npc/dungeon = 1,
 	/mob/living/simple_animal/hostile/rogue/skeleton/guard/xbow = 2,
 	/mob/living/simple_animal/hostile/rogue/skeleton/axe = 5,
@@ -37,9 +37,9 @@
 	max_mobs = 3
 	restart_time = 10 MINUTES
 	mob_types = list(
-	/mob/living/carbon/human/species/skeleton/npc = 6,
+	/mob/living/carbon/human/species/skeleton/npc/ambush = 6,
 	/mob/living/simple_animal/hostile/rogue/skeleton/bow = 4,
-	/mob/living/carbon/human/species/dwarfskeleton = 4,
+	/mob/living/carbon/human/species/dwarfskeleton/ambush = 4,
 	/mob/living/carbon/human/species/skeleton/npc/dungeon = 3,
 	/mob/living/simple_animal/hostile/rogue/skeleton/guard/xbow = 3)
 	text_faction = "Skeletons"
