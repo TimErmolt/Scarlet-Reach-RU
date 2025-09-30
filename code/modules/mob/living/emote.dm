@@ -31,7 +31,7 @@
 	var/prayer = input("Whisper your prayer:", "Prayer") as text|null
 	if(!prayer)
 		return
-	
+
 	//If God can hear your prayer (long enough, no bad words, etc.)
 	if(patron.hear_prayer(follower, prayer))
 		if(follower.has_flaw(/datum/charflaw/addiction/godfearing))
@@ -80,13 +80,11 @@
 	message_param = "bows to %t."
 	restraint_check = TRUE
 	emote_type = EMOTE_VISIBLE
+	targetrange = 4
 
-/datum/emote/living/bow/run_emote(mob/user, params, type_override, intentional)
+/datum/emote/living/bow/adjacentaction(mob/user, mob/target)
 	. = ..()
-	if(. && params && isliving(user))
-		var/mob/living/L = user
-		var/list/split_params = splittext(params, " ")
-		var/mob/target = get_target(L, split_params)
+	if(isliving(user))
 		if(target && ishuman(target))
 			var/mob/living/carbon/human/H = target
 			if(HAS_TRAIT(H, TRAIT_NOBLE))
@@ -96,7 +94,7 @@
 	set name = "Bow"
 	set category = "Emotes"
 
-	emote("bow", intentional = TRUE)
+	emote("bow", intentional = TRUE, targetted = TRUE)
 
 /datum/emote/living/burp
 	key = "burp"
@@ -433,14 +431,33 @@
 
 	emote("grimace", intentional = TRUE)
 
-/datum/emote/living/jump
+/datum/emote/living/jump // i see absolutely zero fucking reason for why this shit doesnt print an emote and a runechat text, jump_fixed on the other hand works juuust fine
 	key = "jump"
+	key_third_person = "jumps"
+	message = "jumps!"
+	restraint_check = TRUE
+
+/datum/emote/living/jump_deathless //literally doesnt have a 'UH!!' sound, thats it
+	key = "jump_deathless"
+	key_third_person = "jumps"
+	message = "jumps!"
+	restraint_check = TRUE
+
+/datum/emote/living/jump_fixed // see above
+	key = "jump_fixed"
 	key_third_person = "jumps"
 	message = "jumps!"
 	restraint_check = TRUE
 
 /datum/emote/living/leap
 	key = "leap"
+	key_third_person = "leaps"
+	message = "leaps!"
+	restraint_check = TRUE
+	only_forced_audio = TRUE
+
+/datum/emote/living/leap_deathless //literally doesnt have a 'UH!!' sound, thats it
+	key = "leap_deathless"
 	key_third_person = "leaps"
 	message = "leaps!"
 	restraint_check = TRUE
@@ -1777,9 +1794,9 @@
 /datum/emote/living/praysuicide
     key = "praysuicide"
     key_third_person = "utters their last words"
-    message = ""                   
+    message = ""
     emote_type = EMOTE_AUDIBLE
-    stat_allowed = UNCONSCIOUS      
+    stat_allowed = UNCONSCIOUS
     show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_praysuicide()
@@ -1813,4 +1830,4 @@
     else
         to_chat(L, span_warning("Nothing happens."))
 
-    return TRUE   
+    return TRUE

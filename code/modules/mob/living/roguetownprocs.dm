@@ -50,7 +50,7 @@
 	if(istype(user.rmb_intent, /datum/rmb_intent/swift))
 		chance2hit -= 20
 
-	if(HAS_TRAIT(user, TRAIT_RAVOX_CURSE))
+	if(HAS_TRAIT(user, TRAIT_CURSE_RAVOX))
 		chance2hit -= 30
 
 	chance2hit = CLAMP(chance2hit, 5, 93)
@@ -230,7 +230,7 @@
 					var/sentinel = SH.calculate_sentinel_bonus()
 					prob2defend += sentinel
 
-			if(HAS_TRAIT(H, TRAIT_RAVOX_CURSE))
+			if(HAS_TRAIT(H, TRAIT_CURSE_RAVOX))
 				prob2defend -= 30
 
 			prob2defend = clamp(prob2defend, 5, 90)
@@ -290,7 +290,7 @@
 
 			if(parry_status)
 				if(intenty.masteritem)
-					if(intenty.masteritem.wbalance < 0 && user.STASTR > src.STASTR) //enemy weapon is heavy, so get a bonus scaling on strdiff
+					if((intenty.masteritem.wbalance < 0 || istype(user.rmb_intent, /datum/rmb_intent/strong))  && user.STASTR > src.STASTR) //enemy weapon is heavy, so get a bonus scaling on strdiff
 						drained = drained + ( intenty.masteritem.wbalance * ((user.STASTR - src.STASTR) * -5) )
 			else
 				to_chat(src, span_warning("The enemy defeated my parry!"))
@@ -585,7 +585,7 @@
 			var/sentinel = H.calculate_sentinel_bonus()
 			prob2defend += sentinel
 
-		if(HAS_TRAIT(H, TRAIT_RAVOX_CURSE))
+		if(HAS_TRAIT(H, TRAIT_CURSE_RAVOX))
 			prob2defend -= 30
 
 		prob2defend = clamp(prob2defend, 5, 90)
